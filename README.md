@@ -13,8 +13,7 @@
 ## Table of Contents
 - [Overview](#overview)  
 - [About Black-Scholes-Merton](#about-black-scholes-merton)  
-- [How the Model Works](#how-the-model-works)  
-- [Project Structure](#project-structure)  
+- [How the Model Works](#how-the-model-works)   
 - [Features](#features)  
 - [Demo](#demo)  
 - [Installation and Running](#installation-and-running)  
@@ -67,25 +66,6 @@ Where \(N(\cdot)\) is the cumulative distribution function of the standard norma
 
 ---
 
-## Project Structure
-
-Black-Scholes-Merton-Options-Calculator/
-│
-├── streamlit_app/
-│ ├── app.py # Main Streamlit app
-│ ├── pricing.py # Option calculation functions
-│ └── requirements.txt # Dependencies for Streamlit app
-│
-├── legacy_fullstack/
-│ ├── frontend/ # React frontend (previous implementation)
-│ └── backend/ # FastAPI backend (previous implementation)
-│
-├── README.md # This file
-└── .gitignore
-
-
----
-
 ## Features
 - **Interactive inputs**: Users can input:
   - Current stock price ($S)  
@@ -99,5 +79,46 @@ Black-Scholes-Merton-Options-Calculator/
 - **Preserved legacy code** in case you want to explore React + FastAPI.  
 
 ---
+
+## Demo
+Check out the live demo here:  
+[🔗 Black-Scholes-Merton Options Calculator](https://black-scholes-options-calculator.streamlit.app)
+
+---
+
+## Usage
+
+1. Enter the required values in the input boxes.  
+2. Click **“Calculate Options Prices”**.  
+3. View the calculated **Call** and **Put** option prices.  
+
+**Notes:**  
+- Rates (`r`, `q`, `vol`) are percentages (e.g., 5 for 5%).  
+- Stock prices use a **$** prefix automatically.  
+- Time is in **years**.  
+
+---
+
+## Legacy Fullstack Version
+
+The folder `legacy_fullstack/` contains the **previous React + FastAPI implementation**:  
+- `frontend/` – React app for inputs and results.  
+- `backend/` – FastAPI backend for calculations.  
+
+Preserved for **learning and reference**.  
+
+---
+
+## Future Work
+
+- Add **interactive graphs** for option prices vs. stock price or volatility.  
+- Include **Greeks**: Delta, Gamma, Theta, Vega, Rho.  
+- Deploy globally without setup.  
+
+---
+
+## Created By
+
+**Denzel Anoliefo** – [GitHub](https://github.com/DenzelAnoliefo) | [Live App](https://black-scholes-options-calculator.streamlit.app)
 
 
