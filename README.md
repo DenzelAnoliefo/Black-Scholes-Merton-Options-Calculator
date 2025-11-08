@@ -1,5 +1,7 @@
 # Black-Scholes-Merton Options Calculator
 
+  Check it out! [Here](https://black-scholes-options-calculator.streamlit.app)
+
 [![Streamlit App](https://img.shields.io/badge/Live-App-brightgreen)](https://black-scholes-options-calculator.streamlit.app)
 [![Python](https://img.shields.io/badge/Python-3.13-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.30-orange)](https://streamlit.io/)
