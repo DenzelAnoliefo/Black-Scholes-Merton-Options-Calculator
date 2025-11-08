@@ -105,12 +105,18 @@ Call Option Price (C) = S * e^(-q * t) * N(d1) - K * e^(-r * t) * N(d2)
 Put Option Price (P) = K * e^(-r * t) * N(-d2) - S * e^(-q * t) * N(-d1)
 
 Where:
-S = Current price of the underlying stock
-K = Strike price of the option
-t = Time to maturity in years
-r = Risk-free interest rate
-q = Dividend yield of the stock
-σ = Volatility of the stock’s returns
+S = Current price of the underlying stock  
+
+K = Strike price of the option  
+
+t = Time to maturity in years  
+
+r = Risk-free interest rate  
+
+q = Dividend yield of the stock  
+
+σ = Volatility of the stock’s returns  
+
 N(x) = Cumulative distribution function of the standard normal distribution
 
 ---
