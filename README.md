@@ -16,7 +16,6 @@
 - [How the Model Works](#how-the-model-works)   
 - [Features](#features)  
 - [Demo](#demo)  
-- [Installation and Running](#installation-and-running)  
 - [Usage](#usage)  
 - [Legacy Fullstack Version](#legacy-fullstack-version)  
 - [Future Work](#future-work)  
@@ -45,24 +44,22 @@ The Black-Scholes-Merton model is a **mathematical framework for pricing Europea
 
 ## How the Model Works
 Formulas for **European call (C) and put (P) options**:
+d1 = [ ln(S / K) + (r - q + 0.5 * σ^2) * t ] / (σ * sqrt(t))
 
-\[
-d_1 = \frac{\ln(S / K) + (r - q + 0.5 \cdot \sigma^2) \cdot t}{\sigma \cdot \sqrt{t}}
-\]
+d2 = d1 - σ * sqrt(t)
 
-\[
-d_2 = d_1 - \sigma \cdot \sqrt{t}
-\]
+Call Option Price (C) = S * e^(-q * t) * N(d1) - K * e^(-r * t) * N(d2)
 
-\[
-C = S e^{-q t} N(d_1) - K e^{-r t} N(d_2)
-\]
+Put Option Price (P) = K * e^(-r * t) * N(-d2) - S * e^(-q * t) * N(-d1)
 
-\[
-P = K e^{-r t} N(-d_2) - S e^{-q t} N(-d_1)
-\]
-
-Where \(N(\cdot)\) is the cumulative distribution function of the standard normal distribution.  
+Where:
+S = Current price of the underlying stock
+K = Strike price of the option
+t = Time to maturity in years
+r = Risk-free interest rate
+q = Dividend yield of the stock
+σ = Volatility of the stock’s returns
+N(x) = Cumulative distribution function of the standard normal distribution
 
 ---
 
