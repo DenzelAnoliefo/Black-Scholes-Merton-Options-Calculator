@@ -94,7 +94,8 @@ In short:
 ---
 
 ## How the Model Works
-Formulas for **European call (C) and put (P) options**:
+Formulas for **European call (C) and put (P) options**:  
+
 d1 = [ ln(S / K) + (r - q + 0.5 * σ^2) * t ] / (σ * sqrt(t))
 
 d2 = d1 - σ * sqrt(t)
