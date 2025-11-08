@@ -1,7 +1,5 @@
 # Black-Scholes-Merton Options Calculator
 
-![Options Calculator](https://user-images.githubusercontent.com/placeholder-image.png)  
-
 [![Streamlit App](https://img.shields.io/badge/Live-App-brightgreen)](https://black-scholes-options-calculator.streamlit.app)
 [![Python](https://img.shields.io/badge/Python-3.13-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.30-orange)](https://streamlit.io/)
@@ -12,7 +10,7 @@
 
 ## Table of Contents
 - [Overview](#overview)  
-- [About Black-Scholes-Merton](#about-black-scholes-merton)  
+- [About Black-Scholes-Merton-Formula](#about-black-scholes-merton-formula)  
 - [How the Model Works](#how-the-model-works)   
 - [Features](#features)  
 - [Demo](#demo)  
@@ -30,15 +28,68 @@ It was originally built using React + FastAPI but is now implemented in **Stream
 
 ---
 
-## About Black-Scholes-Merton
+## About Black-Scholes-Merton-Formula
 The Black-Scholes-Merton model is a **mathematical framework for pricing European-style options**. Developed in 1973 by Fischer Black, Myron Scholes, and Robert Merton, it provides a formula to determine the **fair price** of an option based on several variables:  
 
-1. **Current Stock Price (S)** – Price of the underlying asset today.  
-2. **Strike Price (K)** – Price at which the option can be exercised.  
-3. **Time to Maturity (t)** – Time in years until the option expires.  
-4. **Risk-Free Interest Rate (r)** – Return of a risk-free investment.  
-5. **Dividend Yield (q)** – Expected annual dividend payout.  
-6. **Volatility (σ)** – Standard deviation of the stock’s returns.  
+The Black-Scholes formula arises from **modeling the stock price as a stochastic process** and solving a partial differential equation (PDE).
+
+1. **Stock Price Dynamics**
+The stock price S(t) is assumed to follow **geometric Brownian motion**:
+
+dS = μS dt + σS dW  
+
+Where:
+- μ is the expected return of the stock,
+- σ is the volatility,
+- dW is a Wiener process (random noise term).
+
+This models the stock price as continuously fluctuating with both a deterministic drift (μ) and a stochastic component (σ).
+
+2. **Construct a Risk-Free Portfolio**
+We consider a portfolio Π consisting of:
+- A long position in the option (V), and
+- A short position in Δ shares of the stock (Δ = ∂V/∂S).
+
+The portfolio is:  
+Π = V - Δ S  
+
+Using **Ito’s Lemma** on V(S,t) and substituting dS gives dΠ.  
+We choose Δ = ∂V/∂S to **eliminate the stochastic part** (the dW term), making the portfolio risk-free.
+
+3. **The Black-Scholes PDE**
+For a risk-free portfolio, the return must equal the risk-free interest rate r:
+
+dΠ = r Π dt  
+
+Substituting and simplifying gives the **Black-Scholes PDE**:
+
+∂V/∂t + 0.5 σ² S² ∂²V/∂S² + (r - q) S ∂V/∂S - r V = 0  
+
+- This PDE governs how the option price V(S,t) evolves over time.
+- q is included if the stock pays a continuous dividend yield.
+
+4. **Boundary Conditions**
+- For a **call option**, at expiration t=T: V(S,T) = max(S-K, 0)
+- For a **put option**, at expiration t=T: V(S,T) = max(K-S, 0)
+
+5. **Solving the PDE**
+Using **change of variables** and techniques from heat equation theory, the PDE can be solved in closed form, giving the familiar formulas:
+
+d1 = [ln(S/K) + (r - q + 0.5 σ²) t] / (σ √t)  
+d2 = d1 - σ √t  
+
+Call: C = S e^(-q t) N(d1) - K e^(-r t) N(d2)  
+Put:  P = K e^(-r t) N(-d2) - S e^(-q t) N(-d1)
+
+6. **Intuition Behind d1 and d2**
+- d1 represents the **risk-adjusted probability** that the option will end up in-the-money.  
+- d2 is d1 minus the **volatility adjustment**, giving the expected log-distance from the strike price under risk-neutral measure.  
+- N(d1) and N(d2) are cumulative probabilities under the **risk-neutral distribution**, which is why we can discount by r and q to get present value.
+
+In short:
+- The Black-Scholes formula comes from **hedging away risk**, turning a stochastic process into a deterministic PDE, and solving it using probabilistic methods.  
+- It combines **stock dynamics, time value, volatility, and risk-free discounting** into a single elegant formula for fair option pricing.
+ 
 
 ---
 
