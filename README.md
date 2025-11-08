@@ -65,7 +65,7 @@ dΠ = r Π dt
 
 Substituting and simplifying gives the **Black-Scholes PDE**:
 
-∂V/∂t + 0.5 σ² S² ∂²V/∂S² + (r - q) S ∂V/∂S - r V = 0  
+∂V/∂t + 0.5σ²S²∂²V/∂S² + (r - q)S∂V/∂S - rV = 0  
 
 - This PDE governs how the option price V(S,t) evolves over time.
 - q is included if the stock pays a continuous dividend yield.
@@ -77,11 +77,11 @@ Substituting and simplifying gives the **Black-Scholes PDE**:
 5. **Solving the PDE**
 Using **change of variables** and techniques from heat equation theory, the PDE can be solved in closed form, giving the familiar formulas:
 
-d1 = [ln(S/K) + (r - q + 0.5 σ²) t] / (σ √t)  
-d2 = d1 - σ √t  
+d1 = [ln(S/K) + (r - q + 0.5 σ²)t] / (σ√t)  
+d2 = d1 - σ√t  
 
-Call: C = S e^(-q t) N(d1) - K e^(-r t) N(d2)  
-Put:  P = K e^(-r t) N(-d2) - S e^(-q t) N(-d1)
+Call: C = Se^(-qt)N(d1) - Ke^(-rt)N(d2)  
+Put:  P = Ke^(-rt)N(-d2) - Se^(-qt)N(-d1)
 
 6. **Intuition Behind d1 and d2**
 - d1 represents the **risk-adjusted probability** that the option will end up in-the-money.  
