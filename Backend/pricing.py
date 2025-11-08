@@ -1,6 +1,7 @@
 import math
 from scipy.stats import norm
 
+
 # S -> Current price of the underlying asset
 # K -> Strike Price
 # t -> Time to Expiration (in years)
@@ -19,15 +20,11 @@ def d2(S, K, r, t, q, vol):
     return (d1(S, K, r, t, q, vol) - (vol * math.sqrt(t)))
 
 def callOption(S, K, r, t, q, vol):
-    r = r/100
-    q = q/100
-    vol = vol/100
     C = (S * (math.exp(-(q*t))) * norm.cdf(d1(S, K, r, t, q, vol))) - (K * (math.exp(-(r*t))) * norm.cdf(d2(S, K, r, t, q, vol)))
     return round(C, 2)
 
 def putOption(S, K, r, t, q, vol):
-    r = r/100
-    q = q/100
-    vol = vol/100
     P = (K * (math.exp(-(r*t))) * norm.cdf(-(d2(S, K, r, t, q, vol)))) - (S * (math.exp(-(q*t))) * norm.cdf(-(d1(S, K, r, t, q, vol))))
     return round(P, 2)
+
+
